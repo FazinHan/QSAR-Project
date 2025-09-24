@@ -14,12 +14,15 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from tqdm.auto import tqdm
 import numpy as np
+from chembl_webresource_client.settings import Settings
 
 # --- 3. Fetch Data from ChEMBL ---
 print("Connecting to ChEMBL database...")
 # Use the 'new_client' to interact with the ChEMBL API
 activity = new_client.activity
 target = new_client.target
+
+Settings.Instance().TIMEOUT = 5
 
 # Define the ChEMBL ID for the hERG target
 HERG_TARGET_ID = 'CHEMBL240'
@@ -28,12 +31,12 @@ print(f"Fetching bioactivity data for hERG (Target ID: {HERG_TARGET_ID})...")
 
 # Query for IC50 data for the human hERG protein
 res = activity.filter(
-    target_chembl_id=HERG_TARGET_ID,
+    target_chembl_id=HERG_TARGET_ID,).filter(
     standard_type="IC50",
-    assay_organism="Homo sapiens"
+    # assay_organism="Homo sapiens"
 ).only(
-    'molecule_chembl_id', 'canonical_smiles', 'standard_relation',
-    'standard_value', 'standard_units'
+    ['molecule_chembl_id', 'canonical_smiles', 'standard_relation',
+    'standard_value', 'standard_units']
 )
 
 # Convert the results to a pandas DataFrame
