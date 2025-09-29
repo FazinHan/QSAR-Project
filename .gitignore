@@ -1,1 +1,127 @@
-__pycache__
+# Python bytecode / compiled / C extensions
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.dll
+
+# Virtual environments / environment managers
+.venv/
+venv/
+env/
+ENV/
+.python-version
+pip-wheel-metadata/
+pip-log.txt
+poetry.lock
+Pipfile.lock
+
+# Package / build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+.wheelhouse/
+MANIFEST
+
+# Jupyter
+.ipynb_checkpoints/
+.profile
+*.nbconvert.ipynb
+
+# Logs / temp / cache
+logs/
+*.log
+tmp/
+temp/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pytype/
+
+# Coverage / testing
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+nosetests.xml
+pytestdebug.log
+.tox/
+
+# Type checker / static analysis
+.pyright/
+ruff_cache/
+
+# Security / credentials
+*.pem
+*.key
+
+# Environment / secrets
+.env
+.env.*
+.envrc
+
+# Data (adjust as needed; comment out if you want to version small sample sets)
+data/raw/
+data/interim/
+data/temp/
+data/cache/
+datasets/
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.sqlite
+*.db
+*.pkl
+*.joblib
+*.npy
+*.npz
+
+# Models / artifacts / checkpoints
+models/
+checkpoints/
+artifacts/
+*.ckpt
+*.pt
+*.pth
+*.h5
+*.onnx
+*.tflite
+*.pb
+*.joblib
+*.sav
+
+# Experiment tracking / training outputs
+runs/
+mlruns/
+wandb/
+tensorboard/
+lightning_logs/
+
+# Images / reports (optional)
+reports/figures/
+*.png
+*.jpg
+*.jpeg
+
+# Not needed runtime files
+*.pid
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
+
+# Docker
+*.local.yml
+docker-compose.override.yml
