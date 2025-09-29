@@ -52,7 +52,7 @@ class HERGQSARModel:
     A comprehensive QSAR model for predicting hERG channel blocking activity.
     """
     
-    def __init__(self, fingerprint_type='morgan', model_type='rf'):
+    def __init__(self, df, fingerprint_type='morgan', model_type='rf'):
         """
         Initialize the QSAR model.
         
@@ -69,6 +69,7 @@ class HERGQSARModel:
         self.scaler = StandardScaler()
         self.feature_names = []
         self.is_trained = False
+        self.X, self.valid_indices = self.prepare_features(df)
         
     def create_sample_dataset(self, n_samples=1000):
         """
@@ -269,14 +270,14 @@ class HERGQSARModel:
         print(f"Generated feature matrix: {X.shape}")
         return X, valid_indices
     
-    def create_model(self):
+    def create_model(self, **kwargs):
         """Create the machine learning model based on model_type."""
         if self.model_type == 'rf':
             return RandomForestClassifier(
-                n_estimators=100,
-                max_depth=10,
-                min_samples_split=5,
-                min_samples_leaf=2,
+                n_estimators=kwargs.get('n_estimators', 100),
+                max_depth=kwargs.get('max_depth', 10),
+                min_samples_split=kwargs.get('min_samples_split', 5),
+                min_samples_leaf=kwargs.get('min_samples_leaf', 2),
                 random_state=42,
                 n_jobs=-1
             )
@@ -298,6 +299,13 @@ class HERGQSARModel:
             )
         else:
             raise ValueError(f"Unknown model type: {self.model_type}")
+
+    def set_model_type(self, model_type):
+        """Set the model type and reinitialize the model."""
+        self.model_type = model_type
+        self.model = None
+        self.is_trained = False
+        print(f"Model type set to {self.model_type}. Please retrain the model.")
     
     def train(self, df, test_size=0.2, cv_folds=5):
         """
@@ -315,7 +323,8 @@ class HERGQSARModel:
         print(f"Training {self.model_type.upper()} model with {self.fingerprint_type} fingerprints...")
         
         # Prepare features
-        X, valid_indices = self.prepare_features(df)
+        X, valid_indices = self.X, self.valid_indices
+        # X, valid_indices = self.prepare_features(df)
         y = df.iloc[valid_indices]['active'].values
         
         # Split data
