@@ -325,7 +325,7 @@ def main():
     st.markdown("---")
     st.markdown("""
     <div style='text-align: center; color: gray; font-size: 0.9em;'>
-    Built with Streamlit | Powered by RDKit and scikit-learn | QSAR Project Team
+    Built with Streamlit | Powered by RDKit and scikit-learn | PH421 Project
     </div>
     """, unsafe_allow_html=True)
 
