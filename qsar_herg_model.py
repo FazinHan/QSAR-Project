@@ -291,8 +291,8 @@ class HERGQSARModel:
             )
         elif self.model_type == 'xgb' and XGBOOST_AVAILABLE:
             return xgb.XGBClassifier(
-                n_estimators=100,
-                max_depth=6,
+                n_estimators=kwargs.get('n_estimators', 100),
+                max_depth=kwargs.get('max_depth', 6),
                 learning_rate=0.1,
                 random_state=42,
                 eval_metric='logloss'
@@ -458,11 +458,11 @@ class HERGQSARModel:
         axes[1,1].grid(True, alpha=0.3)
         
         plt.tight_layout()
-        plt.savefig('herg_model_evaluation.png', dpi=300, bbox_inches='tight')
+        plt.savefig('herg_model_evaluation_{}.png'.format(self.model_type), dpi=300, bbox_inches='tight')
         plt.show()
-        
-        print("Evaluation plots saved as 'herg_model_evaluation.png'")
-    
+
+        print("Evaluation plots saved as 'herg_model_evaluation_{}.png'".format(self.model_type))
+
     def predict(self, smiles_list):
         """
         Predict hERG blocking activity for new molecules.
