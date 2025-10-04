@@ -307,7 +307,7 @@ class HERGQSARModel:
         self.is_trained = False
         print(f"Model type set to {self.model_type}. Please retrain the model.")
     
-    def train(self, df, test_size=0.2, cv_folds=5):
+    def train(self, df, test_size=0.2, cv_folds=5, **kwargs):
         """
         Train the QSAR model.
         
@@ -335,7 +335,7 @@ class HERGQSARModel:
         # Create and train model with scaling
         self.model = Pipeline([
             ('scaler', StandardScaler()),
-            ('classifier', self.create_model())
+            ('classifier', self.create_model(**kwargs))
         ])
         
         # Fit the model
