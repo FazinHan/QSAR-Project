@@ -24,7 +24,7 @@ Alternatively, the requisite packages may also be installed into a pre-existing 
 
 ```bash
 # Install dependencies using conda (recommended)
-conda install -c conda-forge rdkit streamlit scikit-learn xgboost pandas numpy matplotlib seaborn pillow
+conda install -c conda-forge rdkit streamlit scikit-learn xgboost pandas numpy matplotlib seaborn pillow tqdm
 
 # Install streamlit-ketcher via pip
 pip install streamlit-ketcher
