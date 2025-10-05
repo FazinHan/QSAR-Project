@@ -14,7 +14,13 @@ A user-friendly web interface for predicting hERG channel blocking activity (car
 
 ### Prerequisites
 
-The application requires RDKit, which is best installed via conda:
+The fastest way to set up an environment for this project is creating a [conda](https://conda-forge.org/download/) environment using the environment file:
+
+```bash
+conda env create -f environment.yml
+```
+
+Alternatively, the requisite packages may also be installed into a pre-existing conda environment.
 
 ```bash
 # Install dependencies using conda (recommended)
@@ -22,12 +28,6 @@ conda install -c conda-forge rdkit streamlit scikit-learn xgboost pandas numpy m
 
 # Install streamlit-ketcher via pip
 pip install streamlit-ketcher
-```
-
-Alternatively, if you have RDKit available through other means:
-
-```bash
-pip install -r requirements.txt
 ```
 
 ## Running the Application
