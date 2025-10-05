@@ -6,6 +6,8 @@ __pycache__/
 *.pyd
 *.dll
 
+test\ files/
+
 # Virtual environments / environment managers
 .venv/
 venv/
