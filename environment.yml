@@ -6,7 +6,6 @@ dependencies:
   - pandas
   - streamlit
   - pillow
-  - rdkit
   - scikit-learn
   - xgboost
   - matplotlib
@@ -15,3 +14,4 @@ dependencies:
   - pip
   - pip:
     - streamlit-ketcher
+    - rdkit
