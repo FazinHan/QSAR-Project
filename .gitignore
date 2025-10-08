@@ -5,6 +5,7 @@ __pycache__/
 *.so
 *.pyd
 *.dll
+*.pyc
 
 test\ files/
 

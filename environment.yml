@@ -13,6 +13,7 @@ dependencies:
   - xgboost
   - matplotlib
   - seaborn
+  - ipykernel
   - tqdm
   - pip
   - pip:
