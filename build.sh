@@ -9,5 +9,7 @@ eval "$($HOME/miniconda/bin/conda shell.bash hook)"
 # create/update the env from your environment.yml
 conda env create -f environment.yml -n myenv || conda env update -f environment.yml -n myenv
 
+which conda
+
 # activate and install any remaining pip deps if needed
 conda activate myenv
